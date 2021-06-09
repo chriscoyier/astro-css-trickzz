@@ -7,7 +7,6 @@ export let link: string;
   
 <div class="card">
   <div class="card-body">
-    <img src={featured_img} alt="" />
     <img src={featured_img} alt={`Featured image for the article ${title}`} />
 
     <div>
@@ -31,11 +30,14 @@ export let link: string;
     grid-template-columns: 1fr;
     gap: 1rem;
   }
-    @container (min-width: 450px) {
-      .card-body {
-        grid-template-columns: 1fr 1fr;
-      }
+  /* BUG? I needed to use TWICE the width here
+     The container actually swaps at 450px
+  */
+  @container (min-width: 900px) {
+    .card-body {
+      grid-template-columns: 1fr 1fr;
     }
+  }
   h2 a {
     color: #309196;
     text-decoration: none;
