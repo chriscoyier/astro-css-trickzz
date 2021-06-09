@@ -1,0 +1,42 @@
+---
+import Card from '../components/Card.astro';
+
+const remoteData = await fetch('https://css-tricks.com/wp-json/wp/v2/posts?per_page=12&_embed=1&_fields=title,link,excerpt,_links.author%22').then(response => response.json());
+---
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CSS-Trickzz</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⭐️</text></svg>">
+    <link rel="stylesheet" href="/style/global.css">
+
+    <style>
+      .grid {
+          display: grid;
+          /* grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); */
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1rem;
+      }
+      h1 {
+        color: orange;
+      }
+    </style>
+</head>
+
+<body>
+  <main>
+    <h1>CSS-Trickzz</h1>
+
+    <div class="grid">
+      {remoteData.map((post) => {
+        return <Card title={post.title.rendered} excerpt={post.excerpt.rendered} />
+      })}
+    </div>
+  </main>
+</body>
+
+</html>

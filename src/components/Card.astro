@@ -1,0 +1,24 @@
+---
+import { Markdown } from 'astro/components';
+
+// props
+export let title: string;
+export let excerpt: string;
+---
+  
+<div class="card">
+  <img src="" alt="" />
+
+  <Markdown>
+    ## {title}
+
+    {excerpt}
+  </Markdown>
+</div>
+
+<style>
+  .card {
+    padding: 1rem;
+    border: 1px solid #ccc;
+  }
+</style>
