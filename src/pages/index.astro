@@ -1,7 +1,7 @@
 ---
 import Card from '../components/Card.astro';
 
-const remoteData = await fetch('https://css-tricks.com/wp-json/wp/v2/posts?per_page=12&_embed=1&_fields=title,link,excerpt,_links.author%22').then(response => response.json());
+const remoteData = await fetch('https://css-tricks.com/wp-json/wp/v2/posts?per_page=12&_embed').then(response => response.json());
 ---
 
 <!doctype html>
@@ -13,16 +13,29 @@ const remoteData = await fetch('https://css-tricks.com/wp-json/wp/v2/posts?per_p
     <title>CSS-Trickzz</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⭐️</text></svg>">
     <link rel="stylesheet" href="/style/global.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;700&display=swap" rel="stylesheet">
 
-    <style>
+    <style lang="scss">
       .grid {
-          display: grid;
-          /* grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); */
-          grid-template-columns: repeat(2, 1fr);
-          gap: 1rem;
+        margin: 4rem;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        @media (max-width: 650px) {
+          grid-template-columns: repeat(1, 1fr);
+          margin: 2rem;
+        }
+        gap: 3rem;
       }
+      
       h1 {
-        color: orange;
+        background: linear-gradient(
+          130deg,
+          #ff7a18,#af002d 41.07%,#319197 76.05%
+        );
+        color: white;
+        padding: 1rem;
+        margin: 0 0 1rem 0;
       }
     </style>
 </head>
@@ -33,7 +46,14 @@ const remoteData = await fetch('https://css-tricks.com/wp-json/wp/v2/posts?per_p
 
     <div class="grid">
       {remoteData.map((post) => {
-        return <Card title={post.title.rendered} excerpt={post.excerpt.rendered} />
+        return(
+          <Card 
+            title={post.title.rendered}
+            link={post.link}
+            excerpt={post.excerpt.rendered}
+            featured_img={post.featured_media_src_url}
+          />
+        )
       })}
     </div>
   </main>

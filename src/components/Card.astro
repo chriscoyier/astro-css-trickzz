@@ -1,24 +1,51 @@
 ---
-import { Markdown } from 'astro/components';
-
-// props
 export let title: string;
 export let excerpt: string;
+export let featured_img: string;
+export let link: string;
 ---
   
 <div class="card">
-  <img src="" alt="" />
+  <div class="card-body">
+    <img src={featured_img} alt="" />
 
-  <Markdown>
-    ## {title}
+    <div>
+      <h2><a href={link}>{title}</a></h2>
 
-    {excerpt}
-  </Markdown>
+      {excerpt}
+    </div>
+  </div>
 </div>
 
 <style>
   .card {
+    width: 100%;
+    contain: style layout inline-size;
+  }
+  .card-body {
     padding: 1rem;
     border: 1px solid #ccc;
+    border-radius: 8px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+    @container (min-width: 450px) {
+      .card-body {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  h2 a {
+    color: #309196;
+    text-decoration: none;
+  }
+  h2 a:hover,
+  h2 a:focus {
+    color: black;
+  }
+  img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
   }
 </style>
