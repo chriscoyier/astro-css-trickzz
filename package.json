@@ -8,5 +8,13 @@
   },
   "devDependencies": {
     "astro": "^0.15.2"
+  },
+  "eslintConfig": {
+    "root": true,
+    "extends": [
+      "plugin:vue/essential",
+      "plugin:prettier/recommended",
+      "eslint:recommended"
+    ]
   }
 }

@@ -1,20 +1,19 @@
 <template>
-  <p>{{ greeting }} World!</p>
+  <footer>{{ greeting }} World!</footer>
 </template>
 
 <script>
 export default {
   setup() {
     return {
-      greeting: "Hello"
+      greeting: 'Hello'
     };
   }
 };
 </script>
 
 <style scoped>
-p {
-  font-size: 2em;
-  text-align: center;
+footer {
+  background: linear-gradient(130deg, #ff7a18, #af002d 41.07%, #319197 76.05%);
 }
 </style>
