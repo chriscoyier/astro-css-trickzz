@@ -1,5 +1,6 @@
 ---
 import Card from '../components/Card.astro';
+import Header from '../components/Header';
 
 const remoteData = await fetch('https://css-tricks.com/wp-json/wp/v2/posts?per_page=12&_embed').then(response => response.json());
 ---
@@ -27,22 +28,12 @@ const remoteData = await fetch('https://css-tricks.com/wp-json/wp/v2/posts?per_p
         }
         gap: 3rem;
       }
-      
-      h1 {
-        background: linear-gradient(
-          130deg,
-          #ff7a18,#af002d 41.07%,#319197 76.05%
-        );
-        color: white;
-        padding: 1rem;
-        margin: 0 0 1rem 0;
-      }
     </style>
 </head>
 
 <body>
   <main>
-    <h1>CSS-Trickzz</h1>
+    <Header />
 
     <div class="grid">
       {remoteData.map((post) => {
