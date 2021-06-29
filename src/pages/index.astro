@@ -1,6 +1,7 @@
 ---
 import Card from '../components/Card.astro';
 import Header from '../components/Header';
+import Footer from '../components/Footer/Footer.vue';
 
 const remoteData = await fetch('https://css-tricks.com/wp-json/wp/v2/posts?per_page=12&_embed').then(response => response.json());
 ---
@@ -47,6 +48,8 @@ const remoteData = await fetch('https://css-tricks.com/wp-json/wp/v2/posts?per_p
         )
       })}
     </div>
+
+    <Footer />
   </main>
 </body>
 
