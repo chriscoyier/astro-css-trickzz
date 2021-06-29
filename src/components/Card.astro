@@ -1,5 +1,15 @@
 ---
-const { title, excerpt, featured_img, link } = Astro.props
+export interface Props {
+  title: string,
+  excerpt: string,
+  featured_img: string,
+  link: string,
+}
+
+const { title, excerpt, featured_img, link } = Astro.props as Props;
+
+// The above is for types... otherwise just do:
+// const { title, excerpt, featured_img, link } = Astro.props;
 ---
   
 <div class="card">
