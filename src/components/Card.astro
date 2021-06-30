@@ -1,5 +1,15 @@
 ---
-const { title, excerpt, featured_img, link } = Astro.props
+export interface Props {
+  title: string,
+  excerpt: string,
+  featured_img: string,
+  link: string,
+}
+
+const { title, excerpt, featured_img, link } = Astro.props as Props;
+
+// The above is for types... otherwise just do:
+// const { title, excerpt, featured_img, link } = Astro.props;
 ---
   
 <div class="card">
@@ -14,18 +24,22 @@ const { title, excerpt, featured_img, link } = Astro.props
   </div>
 </div>
 
-<style>
+<style lang="scss">
   .card {
+    background: white;
     width: 100%;
     contain: style layout inline-size;
+    border-radius: 8px;
+    overflow: hidden;
   }
   .card-body {
-    padding: 1rem;
-    border: 1px solid #ccc;
     border-radius: 8px;
     display: grid;
     grid-template-columns: 1fr;
     gap: 1rem;
+    > div {
+      padding: 0 1.5rem 1.5rem 1.5rem;
+    }
   }
   /* BUG? I needed to use TWICE the width here
      The container actually swaps at 450px
@@ -38,6 +52,8 @@ const { title, excerpt, featured_img, link } = Astro.props
   h2 a {
     color: #309196;
     text-decoration: none;
+    display: block;
+    margin-block-end: 0.75rem;
   }
   h2 a:hover,
   h2 a:focus {
