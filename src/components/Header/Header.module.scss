@@ -5,13 +5,27 @@
   margin: 0 0 1rem 0;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
   svg {
     fill: white;
     margin-inline-end: 0.5rem;
+    display: inline-block;
   }
   span {
     font-size: 35px;
     font-family: fantasy;
     transform: rotate(-8deg) translate(-15px, -15px);
+  }
+  div {
+    display: flex;
+    align-items: center;
+    > * {
+      margin-inline: 0.5rem;
+    }
+  }
+  a {
+    color: inherit;
   }
 }
