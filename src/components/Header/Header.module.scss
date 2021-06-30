@@ -1,9 +1,17 @@
 .root {
-  background: linear-gradient(
-    130deg,
-    #ff7a18,#af002d 41.07%,#319197 76.05%
-  );
+  background: linear-gradient(130deg, #ff7a18, #af002d 41.07%, #319197 76.05%);
   color: white;
   padding: 1rem;
   margin: 0 0 1rem 0;
+  display: flex;
+  align-items: center;
+  svg {
+    fill: white;
+    margin-inline-end: 0.5rem;
+  }
+  span {
+    font-size: 35px;
+    font-family: fantasy;
+    transform: rotate(-8deg) translate(-15px, -15px);
+  }
 }
