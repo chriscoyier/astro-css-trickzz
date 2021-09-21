@@ -20,14 +20,19 @@ const remoteData = await fetch('https://css-tricks.com/wp-json/wp/v2/posts?per_p
 
     <style lang="scss">
       .grid {
-        margin: 4rem;
+        --space: 4rem;
+        margin: var(--space);
+        gap: var(--space);
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        @media (max-width: 650px) {
-          grid-template-columns: repeat(1, 1fr);
-          margin: 2rem;
+        grid-template-columns: 3fr 2fr;
+        @media (max-width: 850px) {
+          grid-template-columns: 1fr 1fr;
+          --space: 2rem;
         }
-        gap: 3rem;
+        @media (max-width: 550px) {
+          grid-template-columns: 1fr;
+          --space: 1.5rem;
+        }
       }
     </style>
 </head>
@@ -49,7 +54,7 @@ const remoteData = await fetch('https://css-tricks.com/wp-json/wp/v2/posts?per_p
       })}
     </div>
 
-    <Footer:visible />
+    <Footer client:visible />
   </main>
 </body>
 
